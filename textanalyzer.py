@@ -11,4 +11,4 @@ file.close()
 
 counter = Counter(textHolder)
 
-print(dict(counter.most_common(5)))
+print(dict(counter.most_common(20)))
