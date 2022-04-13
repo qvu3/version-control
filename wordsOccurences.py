@@ -1,4 +1,15 @@
 
+"""
+Created 4/13/2022
+
+@author: Quang Hoai Son Vu
+@school: Valencia College
+@class: Software Development I
+@instructor: Dr. Lisa Macon
+
+"""
+
+
 from collections import Counter
 import PySimpleGUI as sg
 import os.path
@@ -19,6 +30,7 @@ def show_results(lst):
     
     win.close()
 
+# create a column in the GUI to show files list
 file_list_column = [
     [
         sg.Text("Words Folder"),
@@ -33,6 +45,8 @@ file_list_column = [
     ],
 ]
 
+# create a column to display the chosen file from the list,
+# and call the count_words_occurences function
 words_count_column = [
     [sg.Text("Choose a file from the list:")],
     [sg.Text(size=(40,1), key="-TOUT-")],
@@ -40,7 +54,7 @@ words_count_column = [
     [sg.Button("Count words occurences in selected file")]
 ]
 
-# create a layout
+# create a layout with greetings, a file list column, a file selection column, and a close app button
 layout = [
     [sg.Text("Hello there! This is the Word Occurences App written by Son Vu")],
     [
@@ -53,7 +67,9 @@ layout = [
 
 window = sg.Window('Words Occurences App', layout, margins=(80,40))
 
-# count words occurences function
+# count words occurences function that take in a file's name,
+# read, then split the file into words that then being counted their
+# occurences by a counter, and display the words' occurences.
 def count_words_occurences(filename):   
     textHolder = []
 
@@ -71,7 +87,7 @@ def count_words_occurences(filename):
     show_results(results)
     return results
 
-# create an event loop
+# create an event loop until the app is closed by the "Close the app" button
 while True:
     event, values = window.read()
     if event == "Close the app" or event == sg.WIN_CLOSED:
